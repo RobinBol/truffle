@@ -1,6 +1,7 @@
 'use strict';
 
 // API credentials
+console.log('storej included');
 
 const storj = require('storj-lib');
 const fs = require('fs');
@@ -263,7 +264,7 @@ function uploadFile(bucketId, filePath) {
 }
 
 module.exports = () => {
-
+	console.log('storj run');
 	authenticateWithKeyPair()
 	listKeys().then(() => {
 		// Generate KeyPair
