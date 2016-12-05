@@ -27,6 +27,7 @@
     "solc": "^0.4.4",
     "solidity-parser": "^0.1.1",
     "spawn-args": "^0.1.0",
+    "storj-lib": "~6.0.1",
     "temp": "^0.8.3",
     "truffle-default-builder": "^1.0.3",
     "web3": "^0.16.0",
