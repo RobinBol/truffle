@@ -262,30 +262,30 @@ function uploadFile(bucketId, filePath) {
 	});
 }
 
-authenticateWithKeyPair()
-listKeys().then(() => {
-	// Generate KeyPair
-	const keypair = storj.KeyPair();
-	addKey(keypair).then(() => {
-		listKeys().then(() => {
-			removeKeyPair(keypair).then(() => {
-				listKeys().then(() => {
-					listBuckets().then(() => {
-						addBucket({ name: 'TestBucket' }).then(bucket => {
-							listBuckets().then(() => {
-								removeBucket(bucket.id).then(() => {
-									listBuckets().then(() => {
-										uploadFile();
+module.exports = () => {
+
+	authenticateWithKeyPair()
+	listKeys().then(() => {
+		// Generate KeyPair
+		const keypair = storj.KeyPair();
+		addKey(keypair).then(() => {
+			listKeys().then(() => {
+				removeKeyPair(keypair).then(() => {
+					listKeys().then(() => {
+						listBuckets().then(() => {
+							addBucket({ name: 'TestBucket' }).then(bucket => {
+								listBuckets().then(() => {
+									removeBucket(bucket.id).then(() => {
+										listBuckets().then(() => {
+											uploadFile();
+										});
 									});
 								});
-							});
-						})
+							})
+						});
 					});
 				});
 			});
 		});
 	});
-});
-
-
-
+};
