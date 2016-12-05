@@ -11,6 +11,24 @@ const api = 'https://api.storj.io';
 
 const concurrency = 6;
 
+// // API credentials
+// var user = {email: 'robinbolscher@gmail.com', password: 'zPaCtu260P77lJ1ZbyzGJWy76Q8bz7DqFUZXjf7iM6MdNDOK'};
+// var client = storj.BridgeClient(api, {basicAuth: user});
+//
+// // Generate KeyPair
+// var keypair = storj.KeyPair();
+//
+// // Add the keypair public key to the user account for authentication
+// client.addPublicKey(keypair.getPublicKey(), function(err) {
+// 	if (err) {
+// 		// Handle error on failure.
+// 		return console.log('error', err.message);
+// 	}
+// 	// Save the private key for using to login later.
+// 	// You should probably encrypt this
+// 	fs.writeFileSync('./private.key', keypair.getPrivateKey());
+// });
+
 // Create client for interacting with API
 let client = storj.BridgeClient(api, {
 	keyPair: fs.readFileSync('./private.key').toString() || '',
@@ -263,7 +281,7 @@ function uploadFile(bucketId, filePath) {
 	});
 }
 
-module.exports = () => {
+function runTests() {
 	console.log('storj run');
 	authenticateWithKeyPair()
 	listKeys().then(() => {
@@ -289,4 +307,8 @@ module.exports = () => {
 			});
 		});
 	});
+}
+runTests();
+module.exports = () => {
+	runTests();
 };
